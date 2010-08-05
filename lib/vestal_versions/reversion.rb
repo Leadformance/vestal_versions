@@ -30,7 +30,7 @@ module VestalVersions
         to_number = versions.number_at(value)
 
         changes_between(version, to_number).each do |attribute, change|
-          write_attribute(attribute, change.last)
+          self.send(:"#{attribute}=", change.last)
         end
 
         reset_version(to_number)
