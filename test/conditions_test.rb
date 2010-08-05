@@ -62,7 +62,7 @@ class ConditionsTest < Test::Unit::TestCase
       context 'that pass' do
         setup do
           User.prepare_versioned_options(:if => [:true])
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
 
         should 'be created' do
@@ -73,7 +73,7 @@ class ConditionsTest < Test::Unit::TestCase
       context 'that fail' do
         setup do
           User.prepare_versioned_options(:if => [:false])
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
 
         should 'not be created' do
@@ -86,7 +86,7 @@ class ConditionsTest < Test::Unit::TestCase
       context 'that pass' do
         setup do
           User.prepare_versioned_options(:unless => [:true])
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
 
         should 'not be created' do
@@ -97,7 +97,7 @@ class ConditionsTest < Test::Unit::TestCase
       context 'that fail' do
         setup do
           User.prepare_versioned_options(:unless => [:false])
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
 
         should 'not be created' do
@@ -110,7 +110,7 @@ class ConditionsTest < Test::Unit::TestCase
       context 'that pass' do
         setup do
           User.prepare_versioned_options(:if => [:true], :unless => [:true])
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
 
         should 'not be created' do
@@ -121,7 +121,7 @@ class ConditionsTest < Test::Unit::TestCase
       context 'that fail' do
         setup do
           User.prepare_versioned_options(:if => [:false], :unless => [:false])
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
 
         should 'not be created' do

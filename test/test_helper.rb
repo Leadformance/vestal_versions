@@ -9,3 +9,4 @@ require 'mocha'
 require 'vestal_versions'
 require 'schema'
 begin; require 'redgreen'; rescue LoadError; end
+require 'ruby-debug'

@@ -10,7 +10,7 @@ class ControlTest < Test::Unit::TestCase
     context 'a model update' do
       setup do
         @user.skip_version do
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
       end
 
@@ -22,9 +22,9 @@ class ControlTest < Test::Unit::TestCase
     context 'multiple model updates' do
       setup do
         @user.skip_version do
-          @user.update_attribute(:first_name, 'Stephen')
-          @user.update_attribute(:last_name, 'Jobs')
-          @user.update_attribute(:first_name, 'Steve')
+          @user.update_attributes(:first_name => 'Stephen')
+          @user.update_attributes(:last_name => 'Jobs')
+          @user.update_attributes(:first_name => 'Steve')
         end
       end
 
@@ -43,7 +43,7 @@ class ControlTest < Test::Unit::TestCase
     context 'a model update' do
       setup do
         @user.merge_version do
-          @user.update_attribute(:last_name, 'Jobs')
+          @user.update_attributes(:last_name => 'Jobs')
         end
       end
 
@@ -55,9 +55,9 @@ class ControlTest < Test::Unit::TestCase
     context 'multiple model updates' do
       setup do
         @user.merge_version do
-          @user.update_attribute(:first_name, 'Stephen')
-          @user.update_attribute(:last_name, 'Jobs')
-          @user.update_attribute(:first_name, 'Steve')
+          @user.update_attributes(:first_name => 'Stephen')
+          @user.update_attributes(:last_name => 'Jobs')
+          @user.update_attributes(:first_name => 'Steve')
         end
       end
 
@@ -77,7 +77,7 @@ class ControlTest < Test::Unit::TestCase
       context 'a model update' do
         setup do
           @user.append_version do
-            @user.update_attribute(:last_name, 'Jobs')
+            @user.update_attributes(:last_name => 'Jobs')
           end
         end
 
@@ -89,9 +89,9 @@ class ControlTest < Test::Unit::TestCase
       context 'multiple model updates' do
         setup do
           @user.append_version do
-            @user.update_attribute(:first_name, 'Stephen')
-            @user.update_attribute(:last_name, 'Jobs')
-            @user.update_attribute(:first_name, 'Steve')
+            @user.update_attributes(:first_name => 'Stephen')
+            @user.update_attributes(:last_name => 'Jobs')
+            @user.update_attributes(:first_name => 'Steve')
           end
         end
 
@@ -104,8 +104,8 @@ class ControlTest < Test::Unit::TestCase
     context '(when versions exist),' do
       setup do
         @user = User.create(:name => 'Steve Richert')
-        @user.update_attribute(:last_name, 'Jobs')
-        @user.update_attribute(:last_name, 'Richert')
+        @user.update_attributes(:last_name => 'Jobs')
+        @user.update_attributes(:last_name => 'Richert')
         @last_version = @user.versions.last
         @count = @user.versions.count
       end
@@ -113,7 +113,7 @@ class ControlTest < Test::Unit::TestCase
       context 'a model update' do
         setup do
           @user.append_version do
-            @user.update_attribute(:last_name, 'Jobs')
+            @user.update_attributes(:last_name => 'Jobs')
           end
         end
 
@@ -131,9 +131,9 @@ class ControlTest < Test::Unit::TestCase
       context 'multiple model updates' do
         setup do
           @user.append_version do
-            @user.update_attribute(:first_name, 'Stephen')
-            @user.update_attribute(:last_name, 'Jobs')
-            @user.update_attribute(:first_name, 'Steve')
+            @user.update_attributes(:first_name => 'Stephen')
+            @user.update_attributes(:last_name => 'Jobs')
+            @user.update_attributes(:first_name => 'Steve')
           end
         end
 

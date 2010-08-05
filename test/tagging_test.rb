@@ -4,7 +4,7 @@ class TaggingTest < Test::Unit::TestCase
   context 'Tagging a version' do
     setup do
       @user = User.create(:name => 'Steve Richert')
-      @user.update_attribute(:last_name, 'Jobs')
+      @user.update_attributes(:last_name => 'Jobs')
     end
 
     should "update the version record's tag column" do
@@ -26,7 +26,7 @@ class TaggingTest < Test::Unit::TestCase
   context 'A tagged version' do
     setup do
       user = User.create(:name => 'Steve Richert')
-      user.update_attribute(:last_name, 'Jobs')
+      user.update_attributes(:last_name => 'Jobs')
       user.tag_version('TAG')
       @version = user.versions.last
     end

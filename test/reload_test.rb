@@ -5,7 +5,7 @@ class ReloadTest < Test::Unit::TestCase
     setup do
       @user = User.create(:name => 'Steve Richert')
       first_version = @user.version
-      @user.update_attribute(:last_name, 'Jobs')
+      @user.update_attributes(:last_name => 'Jobs')
       @last_version = @user.version
       @user.revert_to(first_version)
     end

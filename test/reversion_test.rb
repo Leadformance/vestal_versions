@@ -7,11 +7,11 @@ class ReversionTest < Test::Unit::TestCase
       names = ['Steve Richert', 'Stephen Richert', 'Stephen Jobs', 'Steve Jobs']
       time = names.size.hours.ago
       names.each do |name|
-        @user.update_attribute(:name, name)
+        @user.update_attributes(:name => name)
         @attributes[@user.version] = @user.attributes
         time += 1.hour
         if last_version = @user.versions.last
-          last_version.update_attribute(:created_at, time)
+          last_version.update_attributes(:created_at => time)
         end
         @times[@user.version] = time
       end

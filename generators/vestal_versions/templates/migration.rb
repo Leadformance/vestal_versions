@@ -4,7 +4,7 @@ class CreateVestalVersions < ActiveRecord::Migration
       t.belongs_to :versioned, :polymorphic => true
       t.belongs_to :user, :polymorphic => true
       t.string :user_name
-      t.text :changes
+      t.text :change_log
       t.integer :number
       t.string :tag
 

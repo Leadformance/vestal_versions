@@ -4,8 +4,8 @@ class ChangesTest < Test::Unit::TestCase
   context "A version's changes" do
     setup do
       @user = User.create(:name => 'Steve Richert')
-      @user.update_attribute(:last_name, 'Jobs')
-      @changes = @user.versions.last.changes
+      @user.update_attributes(:last_name => 'Jobs')
+      @changes = @user.versions.last.change_log
     end
 
     should 'be a hash' do
@@ -44,7 +44,7 @@ class ChangesTest < Test::Unit::TestCase
       @user.first_name = 'Stephen'
       model_changes = @user.changes
       @user.save
-      changes = @user.versions.last.changes
+      changes = @user.versions.last.change_log
       assert_equal model_changes, changes
     end
   end
@@ -84,10 +84,10 @@ class ChangesTest < Test::Unit::TestCase
     setup do
       name = 'Steve Richert'
       @user = User.create(:name => name)              # 1
-      @user.update_attribute(:last_name, 'Jobs')      # 2
-      @user.update_attribute(:first_name, 'Stephen')  # 3
-      @user.update_attribute(:last_name, 'Richert')   # 4
-      @user.update_attribute(:name, name)             # 5
+      @user.update_attributes(:last_name => 'Jobs')      # 2
+      @user.update_attributes(:first_name => 'Stephen')  # 3
+      @user.update_attributes(:last_name => 'Richert')   # 4
+      @user.update_attributes(:name => name)             # 5
       @version = @user.version
     end
 

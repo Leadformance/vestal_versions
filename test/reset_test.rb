@@ -7,7 +7,7 @@ class ResetTest < Test::Unit::TestCase
       @user, @versions = User.new, []
       @names = ['Steve Richert', 'Stephen Richert', 'Stephen Jobs', 'Steve Jobs']
       @names.each do |name|
-        @user.update_attribute(:name, name)
+        @user.update_attributes(:name => name)
         @versions << @user.version
       end
     end

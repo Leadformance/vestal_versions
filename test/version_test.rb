@@ -4,8 +4,8 @@ class VersionTest < Test::Unit::TestCase
   context 'Versions' do
     setup do
       @user = User.create(:name => 'Stephen Richert')
-      @user.update_attribute(:name, 'Steve Jobs')
-      @user.update_attribute(:last_name, 'Richert')
+      @user.update_attributes(:name => 'Steve Jobs')
+      @user.update_attributes(:last_name => 'Richert')
       @first_version, @last_version = @user.versions.first, @user.versions.last
     end
 
@@ -22,15 +22,15 @@ class VersionTest < Test::Unit::TestCase
 
     should "not equal a separate model's version with the same number" do
       user = User.create(:name => 'Stephen Richert')
-      user.update_attribute(:name, 'Steve Jobs')
-      user.update_attribute(:last_name, 'Richert')
+      user.update_attributes(:name => 'Steve Jobs')
+      user.update_attributes(:last_name => 'Richert')
       first_version, last_version = user.versions.first, user.versions.last
       assert_not_equal @first_version, first_version
       assert_not_equal @last_version, last_version
     end
 
     should 'default to ordering by number when finding through association' do
-      order = @user.versions.send(:scope, :find)[:order]
+      order = @user.versions.proxy_reflection.options[:order]
       assert_equal 'versions.number ASC', order
     end
 

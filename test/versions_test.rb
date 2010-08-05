@@ -7,10 +7,10 @@ class VersionsTest < Test::Unit::TestCase
       names = ['Steve Richert', 'Stephen Richert', 'Stephen Jobs', 'Steve Jobs']
       time = names.size.hours.ago
       names.each do |name|
-        @user.update_attribute(:name, name)
+        @user.update_attributes(:name => name)
         @user.tag_version(@user.version.to_s)
         time += 1.hour
-        @user.versions.last.update_attribute(:created_at, time)
+        @user.versions.last.update_attributes(:created_at => time)
         @times[@user.version] = time
       end
     end
